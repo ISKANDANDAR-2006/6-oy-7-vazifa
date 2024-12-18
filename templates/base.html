@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowers</title>
+</head>
+<body>
+    <header>
+        <h1>Flowers Project</h1>
+        <nav>
+            <a href="{% url 'flower_list' %}">Barcha Gullar</a>
+            <a href="{% url 'type_list' %}">Turlar</a>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Flowers</p>
+    </footer>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowers</title>
+</head>
+<body>
+    <header>
+        <h1>Flowers Project</h1>
+        <nav>
+            <a href="{% url 'flower_list' %}">Barcha Gullar</a>
+            <a href="{% url 'type_list' %}">Turlar</a>
+            <ul>
+                {% load flowers_tags %}
+                {% get_types as all_types %}
+                {% for type in all_types %}
+                    <li>
+                        <a href="{% url 'flowers_by_type' type.id %}">{{ type.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Flowers</p>
+    </footer>
+</body>
+</html>

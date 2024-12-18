@@ -1,0 +1,12 @@
+{% extends 'flowers/base.html' %}
+
+{% block content %}
+    <h2>Turlar</h2>
+    <ul>
+        {% for type in types %}
+            <li>
+                <a href="{% url 'flowers_by_type' type.id %}">{{ type.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
